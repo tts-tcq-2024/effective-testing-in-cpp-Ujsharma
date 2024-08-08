@@ -5,9 +5,9 @@ int alertFailureCount = 0;
 
 int networkAlertStub(float celcius) {
     std::cout << "ALERT: Temperature is " << celcius << " celcius.\n";
-    // Return 200 for ok
-    // Return 500 for not-ok
-    // stub always succeeds and returns 200
+    if (celcius > 200) { // Simulating a failure for high temperatures
+        return 500;
+    }
     return 200;
 }
 
@@ -18,14 +18,17 @@ void alertInCelcius(float farenheit) {
         // non-ok response is not an error! Issues happen in life!
         // let us keep a count of failures to report
         // However, this code doesn't count failures!
-        // Add a test below to catch this bug. Alter the stub above, if needed.
-        alertFailureCount += 0;
+        alertFailureCount += 0; // This should increment failure count, but it's a bug
     }
 }
 
 int main() {
     alertInCelcius(400.5);
+    assert(alertFailureCount == 1); // This should fail due to the bug
+
     alertInCelcius(303.6);
+    assert(alertFailureCount == 2); // This should fail due to the bug
+
     std::cout << alertFailureCount << " alerts failed.\n";
     std::cout << "All is well (maybe!)\n";
     return 0;
