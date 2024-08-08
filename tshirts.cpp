@@ -3,23 +3,23 @@
 
 char size(int cms) {
     char sizeName = '\0';
-    if(cms < 38) {
-        sizeName = 'S';
-    } else if(cms >= 38 && cms < 42) { // Adjusted to include boundary values
-        sizeName = 'M';
-    } else if(cms >= 42) {
-        sizeName = 'L';
+    if (cms < 38) {
+        sizeName = 'S'; // Small
+    } else if (cms >= 38 && cms < 42) {
+        sizeName = 'M'; // Medium
+    } else if (cms >= 42) {
+        sizeName = 'L'; // Large
     }
     return sizeName;
 }
 
 int main() {
     // Test cases
-    assert(size(37) == 'S');  // Should return 'S'
-    assert(size(38) == 'M');  // Should return 'M'
-    assert(size(40) == 'M');  // Should return 'M'
-    assert(size(42) == 'L');  // Should return 'L'
-    assert(size(43) == 'L');  // Should return 'L'
+    assert(size(37) == 'S');  // cms < 38, should be 'S'
+    assert(size(38) == 'M');  // cms >= 38 and < 42, should be 'M'
+    assert(size(40) == 'M');  // cms >= 38 and < 42, should be 'M'
+    assert(size(42) == 'L');  // cms >= 42, should be 'L'
+    assert(size(43) == 'L');  // cms >= 42, should be 'L'
     
     // If all assertions pass, print success message
     std::cout << "All is well (maybe!)\n";
