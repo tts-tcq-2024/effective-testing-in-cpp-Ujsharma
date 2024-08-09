@@ -15,10 +15,8 @@ void alertInCelcius(float farenheit) {
     float celcius = (farenheit - 32) * 5 / 9;
     int returnCode = networkAlertStub(celcius);
     if (returnCode != 200) {
-        // non-ok response is not an error! Issues happen in life!
-        // let us keep a count of failures to report
-        // However, this code doesn't count failures!
-        alertFailureCount += 1; // This should increment failure count, fixed bug
+        // This should increment failure count, but there's a bug
+        alertFailureCount += 0; // Bug: should be 'alertFailureCount += 1;'
     }
 }
 
@@ -26,10 +24,10 @@ void test_alertInCelcius() {
     alertFailureCount = 0;
 
     alertInCelcius(400.5);
-    assert(alertFailureCount == 1); // This should pass now
+    assert(alertFailureCount == 1); // This should fail due to the bug
 
     alertInCelcius(303.6);
-    assert(alertFailureCount == 2); // This should pass now
+    assert(alertFailureCount == 2); // This should fail due to the bug
 }
 
 int main() {
