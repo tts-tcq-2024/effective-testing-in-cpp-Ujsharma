@@ -7,7 +7,7 @@ char size(int cms) {
         sizeName = 'S'; // Small
     } else if (cms > 38 && cms < 42) {
         sizeName = 'M'; // Medium
-    } else if (cms >= 42) {
+    } else if (cms > 42) {
         sizeName = 'L'; // Large
     }
     return sizeName;
