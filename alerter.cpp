@@ -18,17 +18,22 @@ void alertInCelcius(float farenheit) {
         // non-ok response is not an error! Issues happen in life!
         // let us keep a count of failures to report
         // However, this code doesn't count failures!
-        alertFailureCount += 0; // This should increment failure count, but it's a bug
+        alertFailureCount += 1; // This should increment failure count, fixed bug
     }
 }
 
-int main() {
+void test_alertInCelcius() {
+    alertFailureCount = 0;
+
     alertInCelcius(400.5);
-    assert(alertFailureCount == 1); // This should fail due to the bug
+    assert(alertFailureCount == 1); // This should pass now
 
     alertInCelcius(303.6);
-    assert(alertFailureCount == 2); // This should fail due to the bug
+    assert(alertFailureCount == 2); // This should pass now
+}
 
+int main() {
+    test_alertInCelcius();
     std::cout << alertFailureCount << " alerts failed.\n";
     std::cout << "All is well (maybe!)\n";
     return 0;
