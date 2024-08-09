@@ -21,7 +21,7 @@ void test_size() {
     assert(size(42) == 'L');  // cms >= 42, should be 'L'
     assert(size(43) == 'L');  // cms >= 42, should be 'L'
     // Add test for boundary case
-    assert(size(41) == 'M');  // This should fail if there's an issue
+    assert(size(41) == 'M');  // This should fail if there's an issue with boundary condition
 }
 
 int main() {
