@@ -18,13 +18,24 @@ std::string printColorMap() {
     return result;
 }
 
-int main() {
+void test_printColorMap() {
     std::string result = printColorMap();
     std::string expectedLine1 = " 0 | White  | Blue\n";
     std::string expectedLine2 = " 1 | White  | Orange\n";
-    // Check if the first two lines are as expected
+    std::string expectedLine3 = " 2 | White  | Green\n";
+    std::string expectedLine4 = " 3 | White  | Brown\n";
+    std::string expectedLine5 = " 4 | White  | Slate\n";
+
+    // Check if the first five lines are as expected
     assert(result.substr(0, expectedLine1.length()) == expectedLine1);
     assert(result.substr(expectedLine1.length(), expectedLine2.length()) == expectedLine2);
+    assert(result.substr(expectedLine1.length() + expectedLine2.length(), expectedLine3.length()) == expectedLine3);
+    assert(result.substr(expectedLine1.length() + expectedLine2.length() + expectedLine3.length(), expectedLine4.length()) == expectedLine4);
+    assert(result.substr(expectedLine1.length() + expectedLine2.length() + expectedLine3.length() + expectedLine4.length(), expectedLine5.length()) == expectedLine5);
+}
+
+int main() {
+    test_printColorMap();
     std::cout << "All is well (maybe!)\n";
     return 0;
 }
